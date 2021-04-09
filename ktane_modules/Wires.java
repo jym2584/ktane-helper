@@ -1,11 +1,11 @@
-package modules;
+package ktane_modules;
 import java.util.*;
 /**
  * Wires module
  */
 public class Wires extends Module {
 
-    protected Wires(String name) {
+    public Wires(String name) {
         super(name);
     }
 
@@ -13,12 +13,9 @@ public class Wires extends Module {
      * Driver code for gathering color inputs
      */
     @Override
-    public void run() {
-        Scanner scanner = new Scanner(System.in);
-
+    public void run(Scanner scanner) {
         while(true) {
             if(isSuccessfulInput()) {
-                scanner.close();
                 break;
             }
             /* Gathering user input */
@@ -40,7 +37,6 @@ public class Wires extends Module {
                 help();
             
             } else if (tokens[0].equals("quit")) {
-                scanner.close();
                 break;
 
             /* Conditional if there is exactly 3 wires */

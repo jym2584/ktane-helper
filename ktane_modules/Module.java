@@ -1,4 +1,5 @@
-package modules;
+package ktane_modules;
+import java.util.*;
 /**
  * Abstract class for modules
  */
@@ -24,7 +25,7 @@ public abstract class Module {
     /**
      * Runs the loop until exit
      */
-    public void run() {
+    public void run(Scanner scanner) {
         throw new UnsupportedOperationException("Method has not been implemented yet");
     }
 

@@ -10,7 +10,7 @@ public abstract class Module {
     
     /**
      * Module constructor
-     * @param name2
+     * @param name
      */
     protected Module(String name) {
         this.name = name;
@@ -20,6 +20,13 @@ public abstract class Module {
      * Runs the loop until exit
      */
     public void run() {
+        throw new UnsupportedOperationException("Method has not been implemented yet");
+    }
+
+    /**
+     * Prints out the help command
+     */
+    public void help() {
         throw new UnsupportedOperationException("Method has not been implemented yet");
     }
 

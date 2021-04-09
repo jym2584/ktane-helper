@@ -1,18 +1,26 @@
 package modules;
 import java.util.*;
-
+/**
+ * Wires module
+ */
 public class Wires extends Module {
-
+    private boolean successfulInput = false; // quits the program if there if a successful input has been made
     protected Wires(String name) {
         super(name);
     }
 
+    /**
+     * Driver code for gathering color inputs
+     */
     @Override
     public void run() {
         Scanner scanner = new Scanner(System.in);
 
         while(true) {
-
+            if(successfulInput) {
+                scanner.close();
+                break;
+            }
             /* Gathering user input */
             System.out.print(">> ");
             String input = scanner.nextLine().toLowerCase();
@@ -32,6 +40,7 @@ public class Wires extends Module {
                 help();
             
             } else if (tokens[0].equals("quit")) {
+                scanner.close();
                 break;
 
             /* Conditional if there is exactly 3 wires */
@@ -48,11 +57,12 @@ public class Wires extends Module {
                 } else { // Otherwise, cut the last wire.
                     System.out.println("Cut the last wire.");
                 }
+                successfulInput = true;
 
             /* If there are between 3 to 6 wires */
             } else if (tokens.length > 3 && tokens.length < 7) {
                 /* Asking if the serial number is odd */
-                System.out.print(">> Is the serial number odd? (y/n): ");
+                System.out.print(">> Is the serial number odd? (y/any other input for no): ");
                 String askIfOdd = scanner.nextLine().toLowerCase();
 
                 if(askIfOdd.equals("y")) {
@@ -74,6 +84,8 @@ public class Wires extends Module {
                         System.out.println("Cut the second wire.");
                     }
 
+                    successfulInput = true;
+
                 /* Conditional for 5 wires */
                 } else if (tokens.length == 5) {
                     if(colorMap.containsKey("red") && colorMap.get("red") == 1 && colorMap.containsKey("yellow") && colorMap.get("yellow") > 1) {
@@ -86,6 +98,8 @@ public class Wires extends Module {
                         System.out.println("Cut the first wire.");
                     }
 
+                    successfulInput = true;
+
                 /* 6 wires */
                 } else {
                     if(colorMap.containsKey("yellow") && colorMap.get("yellow") == 1 && colorMap.containsKey("white") && colorMap.get("white") > 1) {
@@ -97,6 +111,9 @@ public class Wires extends Module {
                     } else {
                         System.out.println("Cut the fourth wire.");
                     }
+
+                    successfulInput = true;
+
                 }
 
 

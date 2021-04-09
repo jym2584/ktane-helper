@@ -4,7 +4,7 @@ import java.util.*;
  * Wires module
  */
 public class Wires extends Module {
-    private boolean successfulInput = false; // quits the program if there if a successful input has been made
+
     protected Wires(String name) {
         super(name);
     }
@@ -17,7 +17,7 @@ public class Wires extends Module {
         Scanner scanner = new Scanner(System.in);
 
         while(true) {
-            if(successfulInput) {
+            if(isSuccessfulInput()) {
                 scanner.close();
                 break;
             }
@@ -57,8 +57,8 @@ public class Wires extends Module {
                 } else { // Otherwise, cut the last wire.
                     System.out.println("Cut the last wire.");
                 }
-                successfulInput = true;
 
+                setSuccessfulInput();
             /* If there are between 3 to 6 wires */
             } else if (tokens.length > 3 && tokens.length < 7) {
                 /* Asking if the serial number is odd */
@@ -84,8 +84,7 @@ public class Wires extends Module {
                         System.out.println("Cut the second wire.");
                     }
 
-                    successfulInput = true;
-
+                    setSuccessfulInput();
                 /* Conditional for 5 wires */
                 } else if (tokens.length == 5) {
                     if(colorMap.containsKey("red") && colorMap.get("red") == 1 && colorMap.containsKey("yellow") && colorMap.get("yellow") > 1) {
@@ -98,8 +97,7 @@ public class Wires extends Module {
                         System.out.println("Cut the first wire.");
                     }
 
-                    successfulInput = true;
-
+                    setSuccessfulInput();
                 /* 6 wires */
                 } else {
                     if(colorMap.containsKey("yellow") && colorMap.get("yellow") == 1 && colorMap.containsKey("white") && colorMap.get("white") > 1) {
@@ -112,8 +110,7 @@ public class Wires extends Module {
                         System.out.println("Cut the fourth wire.");
                     }
 
-                    successfulInput = true;
-
+                    setSuccessfulInput();
                 }
 
 

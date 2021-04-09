@@ -7,6 +7,10 @@ public abstract class Module {
      * Name of the module
      */
     private final String name;
+    /**
+     * If the program ran as expected, we can choose to break the input loop
+     */
+    private boolean successfulInput;
     
     /**
      * Module constructor
@@ -14,6 +18,7 @@ public abstract class Module {
      */
     protected Module(String name) {
         this.name = name;
+        this.successfulInput = false;
     }
 
     /**
@@ -32,6 +37,14 @@ public abstract class Module {
 
     public String getName() {
         return name;
+    }
+
+    public void setSuccessfulInput() {
+        this.successfulInput = true;
+    }
+        
+    public boolean isSuccessfulInput() {
+        return successfulInput;
     }
 
     @Override

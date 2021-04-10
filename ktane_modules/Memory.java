@@ -5,7 +5,7 @@ import java.util.*;
  */
 public class Memory extends Module {
 
-    protected Memory(String name) {
+    public Memory(String name) {
         super(name);
         //TODO Auto-generated constructor stub
     }
@@ -147,14 +147,14 @@ public class Memory extends Module {
      * @param num
      * @return returns true if the number is between 1-4
      */
-    public boolean displayNumberIsInRange(int num) {
+    private boolean displayNumberIsInRange(int num) {
         return num > 0 && num < 5;
     }
 
     /**
      * Helper function that prints out the saved stage information
      */
-    public static void printStages(Map<String, Integer> stage) {
+    private static void printStages(Map<String, Integer> stage) {
         System.out.println("\n" + String.format("%-20s %s", "TYPE", "NUMBER"));
         System.out.println("----------------------------");
         stage.entrySet().forEach(entry -> {

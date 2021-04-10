@@ -36,8 +36,9 @@ public class CommandLineMain {
      * List of module names to use for grabbing its key value from unsupportedModules
      */
     private static final List<String> UNSUPPORTEDMODULES_LIST = new ArrayList<>(unsupportedModules.keySet());
+    
     /**
-     * Prints the current modules
+     * Prints the uncurrent modules
      */
     private static void printAvailableModules() {
         System.out.println("Available modules: ");
@@ -47,6 +48,9 @@ public class CommandLineMain {
         System.out.println();
     }
 
+    /**
+     * Prints a list of unsupported modules
+     */
     private static void printUnsupportedModules() {
         System.out.println("\nUnsupported modules: ");
         System.out.println(" (!) These modules are currently unsupported because they're either not yet implemented or unfeasible to implement. \n" +

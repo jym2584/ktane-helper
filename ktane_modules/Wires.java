@@ -19,7 +19,7 @@ public class Wires extends Module {
                 break;
             }
             /* Gathering user input */
-            System.out.print(">> ");
+            System.out.print(">> Enter the color names of each wire: ");
             String input = scanner.nextLine().toLowerCase();
             String tokens[] = input.split(" ");
 

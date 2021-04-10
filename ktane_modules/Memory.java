@@ -15,9 +15,9 @@ public class Memory extends Module {
      */
     @Override
     public void run(Scanner scanner) {
+        int stageNum = 1;
+        Map<String, Integer> stage = new LinkedHashMap<>();
         while(true) {
-            int stageNum = 1; // Will switch back to the first stage if an incorrect button was pressed
-            Map<String, Integer> stage = new LinkedHashMap<>();
             System.out.print(">> What is the current display number? (Stage " + stageNum + "): ");
             String input = scanner.nextLine().toLowerCase();
 
@@ -129,8 +129,9 @@ public class Memory extends Module {
                     System.out.println("Enter a valid display number between 1 and 4.\n");
                 }
             } catch (NumberFormatException nfe) {
-                System.out.println("That doesn't seem like a valid display number");
-                help();
+                System.out.println("That doesn't seem like a valid display number. Please enter a valid display number");
+            } catch (ArrayIndexOutOfBoundsException aiobe) {
+                System.out.println("Please enter the valid arguments: number position (eg: 2 4)");
             }
         }
 

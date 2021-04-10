@@ -37,13 +37,16 @@ public class CommandLineMain {
 
         printAvailableModules();
 
+        boolean getInput = true;
         while(true) {
             try {
-                /* Gathering input */
                 Scanner scanner = new Scanner(System.in);
                 System.out.print(">> Enter a module number: ");
                 String input = "";
-                input = scanner.nextLine().toLowerCase();
+                if(getInput) {
+                    input = scanner.nextLine().toLowerCase();
+                    getInput = false;
+                }
 
                 if(input.equals("quit")) {
                     scanner.close();
@@ -51,6 +54,7 @@ public class CommandLineMain {
 
                 } else if (input.equals("help")) {
                     printAvailableModules();
+                    getInput = false;
 
                 /** Run an available module */
                 } else {
@@ -62,20 +66,16 @@ public class CommandLineMain {
                         );
                         modules.get(Integer.parseInt(input) - 1).run(scanner);
 
-
-
                     } catch (IndexOutOfBoundsException iobe) {
                         System.out.println("Make sure to type in the number that's associated with the module.\n");
 
                     } catch (NumberFormatException nfe) {
                         System.out.println("Make sure to type in the number that's associated with the module.\n");
                     }
-
                 }
             } catch (NoSuchElementException nsee) {}
+                getInput = true;
         }
-
-        
 
     }
 }

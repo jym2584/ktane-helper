@@ -10,11 +10,12 @@ public class Memory extends Module {
 
     @Override
     public void run(Scanner scanner) {
+        Map<String, Integer> stage = new LinkedHashMap<>();
         int stageNum = 1;
+
         while(true) {
             System.out.print(">> What is the current display number? (Stage " + stageNum + "): ");
             String input = scanner.nextLine().toLowerCase();
-            Map<String, Integer> stage = new LinkedHashMap();
 
             try {
                 if (input.equals("help")) {
@@ -26,27 +27,89 @@ public class Memory extends Module {
                 } else if (displayNumberIsInRange(Integer.parseInt(input))) { // if the number is between 1 and 4
                     while(true) {
                         if(stageNum == 1) {
-                            System.out.println( "Stage 1 info:\n" +
-                                "If the display is 1, press the button in the second position.\n" +
-                                "If the display is 2, press the button in the second position.\n" +
-                                "If the display is 3, press the button in the third position.\n" +
-                                "If the display is 4, press the button in the fourth position.\n");
+                            System.out.println(
+                                "Stage 1 info:\n" +
+                                "If the display is 1, tell the defuser to press the button in the second position.\n" +
+                                "If the display is 2, tell the defuser to press the button in the second position.\n" +
+                                "If the display is 3, tell the defuser to press the button in the third position.\n" +
+                                "If the display is 4, tell the defuser to press the button in the fourth position.\n"
+                            );
 
-                            System.out.print(">> Ask the defuser the number that corresponds with the position: ");
-                            Integer inputInt = Integer.parseInt(scanner.nextLine());
-                            if(displayNumberIsInRange(inputInt)) {
-                                stage.put("STAGE_1_POSITION", inputInt);
+                            System.out.print(">> Ask the defuser the number as well as the button position that number is in (eg: 2 4): ");
+                            String input2 = scanner.nextLine();
+                            String tokens[] = input2.split(" ");
+                            if( displayNumberIsInRange(Integer.parseInt(tokens[0])) && displayNumberIsInRange(Integer.parseInt(tokens[1]))) {
+                                stage.put("STAGE_1_NUMBER", Integer.parseInt(tokens[0]));
+                                stage.put("STAGE_1_POSITION", Integer.parseInt(tokens[1]));
                                 stageNum++;
                             }
+
                         } else if (stageNum == 2) {
-                            System.out.println( "Stage 2 info:\n" +
-                            "If the display is 1, press the button labeled '4'.\n" +
-                            String.format("If the display is 2, press the button in the same position that [%d] is in from stage 1.%n", stage.get("STAGE_1_POSITION")) +
-                            "If the display is 3, press the button in the first position.\n" +
-                            String.format("If the display is 4, press the button in the same position that [%d] is in from stage 1.", stage.get("STAGE_1_POSITION"))
+                            System.out.println(
+                                "Stage 2 info:\n" +
+                                              "If the display is 1, tell the defuser to press the button labeled '4'.\n" +
+                                String.format("If the display is 2, tell the defuser to press the button in the same position that [%d] is in from stage 1.%n", stage.get("STAGE_1_POSITION")) +
+                                              "If the display is 3, tell the defuser to press the button in the first position.\n" +
+                                String.format("If the display is 4, tell the defuser to press the button in the same position that [%d] is in from stage 1.", stage.get("STAGE_1_POSITION"))
                             );
+                            printStages(stage);
                             
-                            Integer inputInt = Integer.parseInt(scanner.nextLine());
+                            System.out.print(">> Ask the defuser the number as well as the button position that number is in (eg: 2 4): ");
+                            String input2 = scanner.nextLine();
+                            String tokens[] = input2.split(" ");
+
+                            if( displayNumberIsInRange(Integer.parseInt(tokens[0])) && displayNumberIsInRange(Integer.parseInt(tokens[1]))) {
+                                stage.put("STAGE_2_NUMBER", Integer.parseInt(tokens[0]));
+                                stage.put("STAGE_2_POSITION", Integer.parseInt(tokens[1]));
+                                stageNum++;
+                            }
+                            
+                        } else if (stageNum == 3) {
+                            System.out.println("Stage 3 info:\n" +
+                                String.format("If the display is 1, tell the defuser to press the button that has the number [%d] from stage 2.%n", stage.get("STAGE_2_NUMBER")) +
+                                String.format("If the display is 1, tell the defuser to press the button that has the number [%d] from stage 1.%n", stage.get("STAGE_1_NUMBER")) +
+                                              "If the display is 3, press the button in the third position.\n" +
+                                              "If the display is 4, press the button labeled '4'."
+                            );
+                            printStages(stage);
+
+                            System.out.print(">> Ask the defuser the number of the button: ");
+                            String input2 = scanner.nextLine();
+
+                            if( displayNumberIsInRange(Integer.parseInt(input2)) ) {
+                                stage.put("STAGE_3_NUMBER", Integer.parseInt(input2));
+                                stageNum++;
+                            }
+
+                        } else if (stageNum == 4) {
+                            System.out.println("Stage 4 info:\n" +
+                                String.format("If the display is 1, tell the defuser to press the button in the same position that [%d] is in from stage 1.%n", stage.get("STAGE_1_POSITION")) +
+                                              "If the display is 2, press the button in the first position." + 
+                                String.format("If the display is 3, tell the defuser to press the button in the same position that [%d] is in from stage 2.%n", stage.get("STAGE_2_POSITION")) +
+                                String.format("If the display is 4, tell the defuser to press the button in the same position that [%d] is in from stage 2.", stage.get("STAGE_2_POSITION"))
+                            );
+                            printStages(stage);
+
+                            System.out.print(">> Ask the defuser the number of the button: ");
+                            String input2 = scanner.nextLine();
+
+                            if( displayNumberIsInRange(Integer.parseInt(input2)) ) {
+                                stage.put("STAGE_4_NUMBER", Integer.parseInt(input2));
+                                stageNum++;
+                            }
+
+                        } else if (stageNum == 5) {
+                            System.out.println(
+                                String.format("If the display is 1, tell the defuser to press the button that has the number [%d] from stage 1.%n", stage.get("STAGE_1_NUMBER")) +
+                                String.format("If the display is 2, tell the defuser to press the button that has the number [%d] from stage 2.%n", stage.get("STAGE_2_NUMBER")) +
+                                String.format("If the display is 3, tell the defuser to press the button that has the number [%d] from stage 4.%n", stage.get("STAGE_4_NUMBER")) +
+                                String.format("If the display is 4, tell the defuser to press the button that has the number [%d] from stage 3.", stage.get("STAGE_3_NUMBER"))
+                            );
+                            printStages(stage);
+
+                            System.out.print("Enter any input to break the program once you're done!");
+                            String input2 = scanner.nextLine();
+                            break;
                         }
 
 

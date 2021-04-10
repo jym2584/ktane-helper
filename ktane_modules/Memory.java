@@ -10,10 +10,9 @@ public class Memory extends Module {
 
     @Override
     public void run(Scanner scanner) {
-        Map<String, Integer> stage = new LinkedHashMap<>();
-        int stageNum = 1;
-
         while(true) {
+            int stageNum = 1; // Will switch back to the first stage if an incorrect button was pressed
+            Map<String, Integer> stage = new LinkedHashMap<>();
             System.out.print(">> What is the current display number? (Stage " + stageNum + "): ");
             String input = scanner.nextLine().toLowerCase();
 
@@ -25,8 +24,8 @@ public class Memory extends Module {
                     break;
 
                 } else if (displayNumberIsInRange(Integer.parseInt(input))) { // if the number is between 1 and 4
-                    while(true) {
-                        if(stageNum == 1) {
+                    while(true) { // Not really sure how to make the statements below the loop more efficient. Perhaps making a separate helper function that prints the stage info?
+                        if(stageNum == 1) { // First Stage
                             System.out.println(
                                 "\nSTAGE 1 INFO:\n" +
                                 "---------------------------------------------------------------------------------\n" +
@@ -45,7 +44,7 @@ public class Memory extends Module {
                                 stageNum++;
                             }
 
-                        } else if (stageNum == 2) {
+                        } else if (stageNum == 2) { // Second stage
                             System.out.println(
                                 "\nSTAGE 2 INFO:\n" +
                                 "---------------------------------------------------------------------------------\n" +
@@ -66,7 +65,7 @@ public class Memory extends Module {
                                 stageNum++;
                             }
                             
-                        } else if (stageNum == 3) {
+                        } else if (stageNum == 3) { // Third stage
                             System.out.println(
                             "\nSTAGE 3 INFO:\n" +
                                 "---------------------------------------------------------------------------------\n" +
@@ -85,7 +84,7 @@ public class Memory extends Module {
                                 stageNum++;
                             }
 
-                        } else if (stageNum == 4) {
+                        } else if (stageNum == 4) { // Fourth stage
                             System.out.println(
                                 "\nSTAGE 4 INFO:\n" +
                                 "---------------------------------------------------------------------------------\n" +
@@ -104,7 +103,7 @@ public class Memory extends Module {
                                 stageNum++;
                             }
 
-                        } else if (stageNum == 5) {
+                        } else if (stageNum == 5) { // Fifth Stage
                             System.out.println(
                                 "\nSTAGE 5 INFO:\n" +
                                 "---------------------------------------------------------------------------------\n" +
@@ -119,16 +118,7 @@ public class Memory extends Module {
                             String input2 = scanner.nextLine();
                             break;
                         }
-
-
-
                     }
-
-
-
-
-
-
 
                 } else {
                     System.out.println("Enter a valid display number between 1 and 4.\n");

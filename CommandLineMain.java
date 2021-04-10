@@ -36,14 +36,14 @@ public class CommandLineMain {
      * List of module names to use for grabbing its key value from unsupportedModules
      */
     private static final List<String> UNSUPPORTEDMODULES_LIST = new ArrayList<>(unsupportedModules.keySet());
-    
+
     /**
      * Prints the uncurrent modules
      */
     private static void printAvailableModules() {
         System.out.println("Available modules: ");
         for(int i = 0; i < modules.size(); i++) {
-            System.out.println( String.format("   %d. %s", i+1, modules.get(i).getName()) );
+            System.out.println( String.format("   %d. %s", i+1, modules.get(i).getName()));
         }
         System.out.println();
     }

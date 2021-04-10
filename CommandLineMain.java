@@ -8,6 +8,7 @@ public class CommandLineMain {
      */
     public static final List<ktane_modules.Module> modules = new LinkedList<>(); static {
         modules.add(new Wires("On the Subject of Wires"));
+        modules.add(new Memory("On the Subject of Memory"));
     }
     
     public static void availableModules() {

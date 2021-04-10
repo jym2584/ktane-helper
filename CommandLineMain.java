@@ -50,6 +50,7 @@ public class CommandLineMain {
 
                 if(input.equals("quit")) {
                     scanner.close();
+                    System.out.println("Goodbye!");
                     break;
 
                 } else if (input.equals("help")) {
@@ -60,6 +61,7 @@ public class CommandLineMain {
                 } else {
                     
                     try {
+                        System.out.print(String.format("\033[2J")); // erases previous content
                         System.out.println("\nCurrent Module: " + 
                             modules.get(Integer.parseInt(input) - 1).getName() + 
                             "\n-------------------------------------------"

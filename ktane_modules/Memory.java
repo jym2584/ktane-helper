@@ -1,6 +1,8 @@
 package ktane_modules;
 import java.util.*;
-
+/**
+ * Memory module
+ */
 public class Memory extends Module {
 
     protected Memory(String name) {
@@ -8,6 +10,9 @@ public class Memory extends Module {
         //TODO Auto-generated constructor stub
     }
 
+    /**
+     * Driver code
+     */
     @Override
     public void run(Scanner scanner) {
         while(true) {
@@ -140,7 +145,7 @@ public class Memory extends Module {
     /**
      * Helper function to determine if the display number is currently within the range 1-4.
      * @param num
-     * @return
+     * @return returns true if the number is between 1-4
      */
     public boolean displayNumberIsInRange(int num) {
         return num > 0 && num < 5;

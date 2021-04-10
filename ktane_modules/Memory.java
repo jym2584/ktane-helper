@@ -26,6 +26,7 @@ public class Memory extends Module {
                     help();
                 
                 } else if (input.equals("quit")) {
+                    System.out.print(String.format("\033[2J"));
                     break;
 
                 } else if (displayNumberIsInRange(Integer.parseInt(input))) { // if the number is between 1 and 4

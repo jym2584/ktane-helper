@@ -37,6 +37,7 @@ public class Wires extends Module {
                 help();
             
             } else if (tokens[0].equals("quit")) {
+                System.out.print(String.format("\033[2J"));
                 break;
 
             /* Conditional if there is exactly 3 wires */

@@ -28,11 +28,12 @@ public class Memory extends Module {
                     while(true) {
                         if(stageNum == 1) {
                             System.out.println(
-                                "Stage 1 info:\n" +
-                                "If the display is 1, tell the defuser to press the button in the second position.\n" +
-                                "If the display is 2, tell the defuser to press the button in the second position.\n" +
-                                "If the display is 3, tell the defuser to press the button in the third position.\n" +
-                                "If the display is 4, tell the defuser to press the button in the fourth position.\n"
+                                "\nSTAGE 1 INFO:\n" +
+                                "---------------------------------------------------------------------------------\n" +
+                                "   > If the display is 1, tell the defuser to press the button in the second position.\n" +
+                                "   > If the display is 2, tell the defuser to press the button in the second position.\n" +
+                                "   > If the display is 3, tell the defuser to press the button in the third position.\n" +
+                                "   > If the display is 4, tell the defuser to press the button in the fourth position.\n"
                             );
 
                             System.out.print(">> Ask the defuser the number as well as the button position that number is in (eg: 2 4): ");
@@ -46,11 +47,12 @@ public class Memory extends Module {
 
                         } else if (stageNum == 2) {
                             System.out.println(
-                                "Stage 2 info:\n" +
-                                              "If the display is 1, tell the defuser to press the button labeled '4'.\n" +
-                                String.format("If the display is 2, tell the defuser to press the button in the same position that [%d] is in from stage 1.%n", stage.get("STAGE_1_POSITION")) +
-                                              "If the display is 3, tell the defuser to press the button in the first position.\n" +
-                                String.format("If the display is 4, tell the defuser to press the button in the same position that [%d] is in from stage 1.", stage.get("STAGE_1_POSITION"))
+                                "\nSTAGE 2 INFO:\n" +
+                                "---------------------------------------------------------------------------------\n" +
+                                              "   > If the display is 1, tell the defuser to press the button labeled '4'.\n" +
+                                String.format("   > If the display is 2, tell the defuser to press the button in the same position that [%d] is in from stage 1.%n", stage.get("STAGE_1_POSITION")) +
+                                              "   > If the display is 3, tell the defuser to press the button in the first position.\n" +
+                                String.format("   > If the display is 4, tell the defuser to press the button in the same position that [%d] is in from stage 1.", stage.get("STAGE_1_POSITION"))
                             );
                             printStages(stage);
                             
@@ -65,11 +67,13 @@ public class Memory extends Module {
                             }
                             
                         } else if (stageNum == 3) {
-                            System.out.println("Stage 3 info:\n" +
-                                String.format("If the display is 1, tell the defuser to press the button that has the number [%d] from stage 2.%n", stage.get("STAGE_2_NUMBER")) +
-                                String.format("If the display is 1, tell the defuser to press the button that has the number [%d] from stage 1.%n", stage.get("STAGE_1_NUMBER")) +
-                                              "If the display is 3, press the button in the third position.\n" +
-                                              "If the display is 4, press the button labeled '4'."
+                            System.out.println(
+                            "\nSTAGE 3 INFO:\n" +
+                                "---------------------------------------------------------------------------------\n" +
+                                String.format("   > If the display is 1, tell the defuser to press the button that has the number [%d] from stage 2.%n", stage.get("STAGE_2_NUMBER")) +
+                                String.format("   > If the display is 1, tell the defuser to press the button that has the number [%d] from stage 1.%n", stage.get("STAGE_1_NUMBER")) +
+                                              "   > If the display is 3, press the button in the third position.\n" +
+                                              "   > If the display is 4, press the button labeled '4'."
                             );
                             printStages(stage);
 
@@ -82,11 +86,13 @@ public class Memory extends Module {
                             }
 
                         } else if (stageNum == 4) {
-                            System.out.println("Stage 4 info:\n" +
-                                String.format("If the display is 1, tell the defuser to press the button in the same position that [%d] is in from stage 1.%n", stage.get("STAGE_1_POSITION")) +
-                                              "If the display is 2, press the button in the first position." + 
-                                String.format("If the display is 3, tell the defuser to press the button in the same position that [%d] is in from stage 2.%n", stage.get("STAGE_2_POSITION")) +
-                                String.format("If the display is 4, tell the defuser to press the button in the same position that [%d] is in from stage 2.", stage.get("STAGE_2_POSITION"))
+                            System.out.println(
+                                "\nSTAGE 4 INFO:\n" +
+                                "---------------------------------------------------------------------------------\n" +
+                                String.format("   > If the display is 1, tell the defuser to press the button in the same position that [%d] is in from stage 1.%n", stage.get("STAGE_1_POSITION")) +
+                                              "   > If the display is 2, press the button in the first position." + 
+                                String.format("   > If the display is 3, tell the defuser to press the button in the same position that [%d] is in from stage 2.%n", stage.get("STAGE_2_POSITION")) +
+                                String.format("   > If the display is 4, tell the defuser to press the button in the same position that [%d] is in from stage 2.", stage.get("STAGE_2_POSITION"))
                             );
                             printStages(stage);
 
@@ -100,14 +106,16 @@ public class Memory extends Module {
 
                         } else if (stageNum == 5) {
                             System.out.println(
-                                String.format("If the display is 1, tell the defuser to press the button that has the number [%d] from stage 1.%n", stage.get("STAGE_1_NUMBER")) +
-                                String.format("If the display is 2, tell the defuser to press the button that has the number [%d] from stage 2.%n", stage.get("STAGE_2_NUMBER")) +
-                                String.format("If the display is 3, tell the defuser to press the button that has the number [%d] from stage 4.%n", stage.get("STAGE_4_NUMBER")) +
-                                String.format("If the display is 4, tell the defuser to press the button that has the number [%d] from stage 3.", stage.get("STAGE_3_NUMBER"))
+                                "\nSTAGE 5 INFO:\n" +
+                                "---------------------------------------------------------------------------------\n" +
+                                String.format("   > If the display is 1, tell the defuser to press the button that has the number [%d] from stage 1.%n", stage.get("STAGE_1_NUMBER")) +
+                                String.format("   > If the display is 2, tell the defuser to press the button that has the number [%d] from stage 2.%n", stage.get("STAGE_2_NUMBER")) +
+                                String.format("   > If the display is 3, tell the defuser to press the button that has the number [%d] from stage 4.%n", stage.get("STAGE_4_NUMBER")) +
+                                String.format("   > If the display is 4, tell the defuser to press the button that has the number [%d] from stage 3.", stage.get("STAGE_3_NUMBER"))
                             );
                             printStages(stage);
 
-                            System.out.print("Enter any input to break the program once you're done!");
+                            System.out.print("Enter any input to break this part of the program once you're done!");
                             String input2 = scanner.nextLine();
                             break;
                         }
@@ -152,9 +160,12 @@ public class Memory extends Module {
      * Helper function that prints out the saved stage information
      */
     public static void printStages(Map<String, Integer> stage) {
+        System.out.println("\n" + String.format("%-20s %s", "TYPE", "NUMBER"));
+        System.out.println("----------------------------");
         stage.entrySet().forEach(entry -> {
-            System.out.println(entry.getKey() + ": " + entry.getValue());
+            System.out.println(String.format("%-23s %s", entry.getKey(), entry.getValue()));
         });
+        System.out.println();
     }
 
     public static void main(String[] args) {

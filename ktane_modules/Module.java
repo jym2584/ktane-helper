@@ -24,6 +24,7 @@ public abstract class Module {
 
     /**
      * Runs the loop until exit
+     * @param scanner takes in a scanner input
      */
     public void run(Scanner scanner) {
         throw new UnsupportedOperationException("Method has not been implemented yet");

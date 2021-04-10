@@ -143,7 +143,9 @@ public class Wires extends Module {
 
     public static void main(String[] args) {
         Module wires = new Wires("On the Subject of Wires");
-        wires.run();
+        Scanner scanner = new Scanner(System.in);
+        wires.run(scanner);
+        scanner.close();
     }
 
     
